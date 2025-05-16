@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@../CSS/Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.DashboardController">
+
+   <!-- Pie Chart -->
+   <PieChart fx:id="pie_cart" layoutX="39.0" layoutY="191.0" prefHeight="400.0" prefWidth="411.0" />
+
+   <!-- Date Filter -->
+   <DatePicker fx:id="date" layoutX="800.0" layoutY="102.0" prefHeight="40.0" prefWidth="180.0" />
+
+   <!-- INCOME Block -->
+   <AnchorPane layoutX="52.0" layoutY="39.0" prefHeight="125.0" prefWidth="220.0" styleClass="incomeBox">
+      <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="INCOME" />
+      <Label fx:id="income_value" layoutX="54.0" layoutY="25.0" prefHeight="75.0" prefWidth="113.0" styleClass="incomeValue" />
+   </AnchorPane>
+
+   <!-- EXPENSES Block -->
+   <AnchorPane layoutX="294.0" layoutY="39.0" prefHeight="125.0" prefWidth="220.0" styleClass="expaenesBox">
+      <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="EXPENSES" />
+      <Label fx:id="expenses_value" layoutX="54.0" layoutY="25.0" prefHeight="75.0" prefWidth="113.0" styleClass="expensesValue" />
+   </AnchorPane>
+
+   <!-- SAVED Block -->
+   <AnchorPane layoutX="536.0" layoutY="39.0" prefHeight="125.0" prefWidth="220.0" styleClass="savedBOx">
+      <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="SAVED" />
+      <Label fx:id="saved_value" layoutX="54.0" layoutY="25.0" prefHeight="75.0" prefWidth="113.0" styleClass="savedValue" />
+   </AnchorPane>
+
+   <!-- Line Chart -->
+   <LineChart fx:id="line_chart" layoutX="471.0" layoutY="191.0" prefHeight="400.0" prefWidth="480.0">
+      <xAxis>
+         <CategoryAxis side="BOTTOM" />
+      </xAxis>
+      <yAxis>
+         <NumberAxis side="LEFT" />
+      </yAxis>
+   </LineChart>
+
+   <!-- Total Needs -->
+   <AnchorPane layoutX="39.0" layoutY="591.0" prefHeight="125.0" prefWidth="220.0">
+      <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Total Of Needs" />
+      <Label fx:id="total_needs" layoutX="46.0" layoutY="24.0" prefHeight="75.0" prefWidth="113.0" />
+   </AnchorPane>
+
+   <!-- Total Wants -->
+   <AnchorPane layoutX="294.0" layoutY="591.0" prefHeight="125.0" prefWidth="220.0">
+      <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Total Of Wants" />
+      <Label fx:id="total_wants" layoutX="46.0" layoutY="24.0" prefHeight="75.0" prefWidth="113.0" />
+   </AnchorPane>
+
+   <!-- Buttons -->
+   <Button layoutX="800.0" layoutY="39.0" onAction="#handleRefresh" prefWidth="180.0" text="Refresh" />
+   <Button layoutX="800.0" layoutY="600.0" onAction="#openAddRateWindow" prefWidth="180.0" text="Add Income/Expense" />
+   <Button layoutX="800.0" layoutY="650.0" onAction="#handleExportExcel" prefWidth="180.0" text="Export to Excel" />
+   <Button layoutX="800.0" layoutY="700.0" onAction="#handleExportPDF" prefWidth="180.0" text="Export to PDF" />
+
+</AnchorPane>

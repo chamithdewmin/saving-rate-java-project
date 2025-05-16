@@ -1,0 +1,197 @@
+.root {
+    -fx-background-color: #1e1e2f;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.incomeBox {
+    -fx-background-color: #2196f3;
+    -fx-background-radius: 12px;
+    -fx-padding: 10px;
+}
+
+.expaenesBox {
+    -fx-background-color: #f44336;
+    -fx-background-radius: 12px;
+    -fx-padding: 10px;
+}
+
+.savedBOx {
+    -fx-background-color: #ffeb3b;
+    -fx-background-radius: 12px;
+    -fx-padding: 10px;
+}
+
+.label-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.incomeValue, .expensesValue, .savedValue {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.incomeValue {
+    -fx-text-fill: #e3f2fd;
+}
+.expensesValue {
+    -fx-text-fill: #ffebee;
+}
+.savedValue {
+    -fx-text-fill: #000000;
+}
+
+.label {
+    -fx-text-fill: #ffffff;
+}
+
+.date-picker {
+    -fx-background-color: #2c2c3e;
+    -fx-text-fill: #ffffff;
+}
+
+.button {
+    -fx-background-color: #3f51b5;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #5c6bc0;
+}
+
+.chart-pie, .chart-line-symbol {
+    -fx-background-color: transparent;
+    -fx-pie-label-visible: true;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+.root {
+    -fx-background-color: #121212;
+    -fx-font-family: "JetBrains Mono", "Consolas", sans-serif;
+}
+
+.incomeBox {
+    -fx-background-color: linear-gradient(to right, #00c6ff, #0072ff);
+    -fx-background-radius: 15px;
+    -fx-padding: 12px;
+}
+
+.expaenesBox {
+    -fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b);
+    -fx-background-radius: 15px;
+    -fx-padding: 12px;
+}
+
+.savedBOx {
+    -fx-background-color: linear-gradient(to right, #f7971e, #ffd200);
+    -fx-background-radius: 15px;
+    -fx-padding: 12px;
+}
+
+.label-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.incomeValue, .expensesValue, .savedValue {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.incomeValue {
+    -fx-text-fill: #ffffff;
+}
+.expensesValue {
+    -fx-text-fill: #ffffff;
+}
+.savedValue {
+    -fx-text-fill: #000000;
+}
+
+.label {
+    -fx-text-fill: #eeeeee;
+}
+
+.date-picker {
+    -fx-background-color: #292929;
+    -fx-text-fill: #ffffff;
+}
+
+.button {
+    -fx-background-color: #8e24aa;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(one-pass-box, #00000088, 4, 0, 2, 2);
+}
+
+.button:hover {
+    -fx-background-color: #ba68c8;
+}
+
+.chart-pie {
+    -fx-pie-label-visible: true;
+}
+
+.chart-line-symbol {
+    -fx-background-color: #64ffda;
+    -fx-background-radius: 5px;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines {
+    -fx-stroke: #444;
+}
+
+.axis {
+    -fx-tick-label-fill: white;
+    -fx-axis-line-visible: true;
+    -fx-tick-mark-visible: true;
+}
+
+.axis-label {
+    -fx-text-fill: white;
+}
+/* ===== PieChart Colors (Up to 8 segments) ===== */
+.default-color0.chart-pie { -fx-pie-color: #00c6ff; }
+.default-color1.chart-pie { -fx-pie-color: #ff4b2b; }
+.default-color2.chart-pie { -fx-pie-color: #f7971e; }
+.default-color3.chart-pie { -fx-pie-color: #8e24aa; }
+.default-color4.chart-pie { -fx-pie-color: #64ffda; }
+.default-color5.chart-pie { -fx-pie-color: #d500f9; }
+.default-color6.chart-pie { -fx-pie-color: #ff6f00; }
+.default-color7.chart-pie { -fx-pie-color: #00e676; }
+
+/* ===== LineChart Series Colors ===== */
+.default-color0.chart-series-line { -fx-stroke: #00c6ff; }
+.default-color1.chart-series-line { -fx-stroke: #ff4b2b; }
+.default-color2.chart-series-line { -fx-stroke: #ffd200; }
+.default-color3.chart-series-line { -fx-stroke: #64ffda; }
+
+/* ===== Line Symbols (Dots) ===== */
+.default-color0.chart-line-symbol { -fx-background-color: #00c6ff; }
+.default-color1.chart-line-symbol { -fx-background-color: #ff4b2b; }
+.default-color2.chart-line-symbol { -fx-background-color: #ffd200; }
+.default-color3.chart-line-symbol { -fx-background-color: #64ffda; }
+
