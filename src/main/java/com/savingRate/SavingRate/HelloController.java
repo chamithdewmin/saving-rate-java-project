@@ -1,4 +1,4 @@
-package com.monthlysave.monthlysave;
+package com.savingRate.SavingRate;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

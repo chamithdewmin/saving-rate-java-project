@@ -1,4 +1,4 @@
-package com.monthlysave.monthlysave;
+package com.savingRate.SavingRate;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

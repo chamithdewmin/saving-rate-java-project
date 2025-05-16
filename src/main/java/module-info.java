@@ -3,6 +3,6 @@ module com.monthlysave.monthlysave {
     requires javafx.fxml;
 
 
-    opens com.monthlysave.monthlysave to javafx.fxml;
-    exports com.monthlysave.monthlysave;
+    opens com.savingRate.SavingRate to javafx.fxml;
+    exports com.savingRate.SavingRate;
 }
