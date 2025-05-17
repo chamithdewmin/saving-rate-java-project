@@ -20,6 +20,10 @@ public class AddRateController {
     @FXML public ComboBox<String> categoryCombo;
 
     @FXML public ListView<String> expens_list;
+    public Button search_button;
+    public TextField search_box;
+    public ComboBox search_list;
+    public TableView table;
 
     @FXML
     public void initialize() {

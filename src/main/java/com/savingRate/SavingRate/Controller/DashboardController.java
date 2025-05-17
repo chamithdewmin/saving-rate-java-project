@@ -20,7 +20,6 @@ import java.util.List;
 
 public class DashboardController {
 
-    @FXML public PieChart pie_cart;
     @FXML public Label income_value;
     @FXML public Label expenses_value;
     @FXML public Label saved_value;
@@ -28,6 +27,7 @@ public class DashboardController {
     @FXML public Label total_wants;
     @FXML public LineChart<String, Number> line_chart;
     @FXML public DatePicker date;
+    public javafx.scene.chart.PieChart PieChart;
 
     @FXML
     public void initialize() {
@@ -58,10 +58,10 @@ public class DashboardController {
         if (total_needs != null) total_needs.setText(String.format("%.2f", needs));
         if (total_wants != null) total_wants.setText(String.format("%.2f", wants));
 
-        pie_cart.getData().clear();
-        pie_cart.getData().add(new PieChart.Data("Total Income", totalIncome));
-        pie_cart.getData().add(new PieChart.Data("Total Expenses", totalExpense));
-        pie_cart.getData().add(new PieChart.Data("Saved", saved));
+        PieChart.getData().clear();
+        PieChart.getData().add(new PieChart.Data("Total Income", totalIncome));
+        PieChart.getData().add(new PieChart.Data("Total Expenses", totalExpense));
+        PieChart.getData().add(new PieChart.Data("Saved", saved));
 
         populateLineChart(incomes, expenses);
     }
@@ -117,7 +117,7 @@ public class DashboardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Xaml/addRate.fxml"));
             Stage stage = new Stage();
             stage.setTitle("Add Rate");
-            stage.setScene(new Scene(loader.load(), 1024, 768));
+            stage.setScene(new Scene(loader.load(), 1200, 800));
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

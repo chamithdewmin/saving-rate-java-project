@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.savingRate.SavingRate.Controller.AddRateController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../CSS/addRate.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.AddRateController">
 
    <!-- Income Section -->
-   <DatePicker fx:id="income_Date" layoutX="75.0" layoutY="139.0" prefHeight="49.0" prefWidth="233.0" promptText="Date" />
-   <TextField fx:id="income_description" layoutX="75.0" layoutY="231.0" prefHeight="49.0" prefWidth="233.0" promptText="Description" />
-   <TextField fx:id="income_value" layoutX="380.0" layoutY="139.0" prefHeight="49.0" prefWidth="117.0" promptText="RS" />
-   <Button layoutX="75.0" layoutY="300.0" text="Add Income" onAction="#handleAddIncome"/>
+   <DatePicker fx:id="income_Date" layoutX="75.0" layoutY="103.0" prefHeight="49.0" prefWidth="249.0" promptText="Date" />
+   <TextField fx:id="income_description" layoutX="75.0" layoutY="188.0" prefHeight="49.0" prefWidth="249.0" promptText="Description" />
+   <TextField fx:id="income_value" layoutX="380.0" layoutY="103.0" prefHeight="49.0" prefWidth="131.0" promptText="RS" />
+   <Button layoutX="75.0" layoutY="273.0" onAction="#handleAddIncome" text="Add Income" />
 
    <!-- Expense Section -->
-   <DatePicker fx:id="expens_date" layoutX="75.0" layoutY="438.0" prefHeight="49.0" prefWidth="233.0" promptText="Date" />
-   <TextField fx:id="expens_description" layoutX="75.0" layoutY="525.0" prefHeight="49.0" prefWidth="233.0" promptText="Description" />
-   <TextField fx:id="expens_value" layoutX="75.0" layoutY="612.0" prefHeight="49.0" prefWidth="117.0" promptText="RS" />
-   <ComboBox fx:id="categoryCombo" layoutX="220.0" layoutY="612.0" prefHeight="49.0" prefWidth="100.0" promptText="Category" />
-   <Button layoutX="75.0" layoutY="680.0" text="Add Expense" onAction="#handleAddExpense"/>
+   <DatePicker fx:id="expens_date" layoutX="77.0" layoutY="413.0" prefHeight="49.0" prefWidth="233.0" promptText="Date" />
+   <TextField fx:id="expens_description" layoutX="76.0" layoutY="497.0" prefHeight="49.0" prefWidth="233.0" promptText="Description" />
+   <TextField fx:id="expens_value" layoutX="75.0" layoutY="581.0" prefHeight="49.0" prefWidth="117.0" promptText="RS" />
+   <ComboBox fx:id="categoryCombo" layoutX="209.0" layoutY="581.0" prefHeight="49.0" prefWidth="100.0" promptText="Category" />
+   <Button layoutX="73.0" layoutY="677.0" onAction="#handleAddExpense" text="Add Expense" />
 
    <!-- Expense List -->
-   <ListView fx:id="expens_list" layoutX="380.0" layoutY="438.0" prefHeight="200.0" prefWidth="300.0" />
+   <ListView fx:id="expens_list" layoutX="380.0" layoutY="411.0" prefHeight="222.0" prefWidth="131.0" />
+   <Label layoutX="73.0" layoutY="48.0" prefHeight="27.0" prefWidth="223.0" styleClass="incomeLableTpic" stylesheets="@../CSS/addRate.css" text="Add Your Income Here" />
+   <Label layoutX="75.0" layoutY="362.0" prefHeight="27.0" prefWidth="249.0" styleClass="ExpaensLabelTopic" stylesheets="@../CSS/addRate.css" text="Add Your Expences Here" />
 </AnchorPane>
