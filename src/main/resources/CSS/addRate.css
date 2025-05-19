@@ -38,16 +38,17 @@
 
 /* Buttons */
 .button {
-    -fx-background-color: #8e24aa;
+    -fx-background-color: #00C6A2;
     -fx-text-fill: #ffffff;
     -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
     -fx-background-radius: 10px;
     -fx-cursor: hand;
     -fx-effect: dropshadow(one-pass-box, #00000088, 4, 0, 2, 2);
+    -fx-font-weight: bold;
 }
 .button:hover {
-    -fx-background-color: #ba68c8;
+    -fx-background-color: #1DE9B6;
 }
 
 /* ListView */
@@ -57,4 +58,24 @@
     -fx-border-color: #333;
     -fx-background-radius: 8px;
     -fx-padding: 8px;
+}
+
+.desTxt {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.Date {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.rsTxt {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.Cat {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="588.0" prefWidth="478.0" styleClass="root" stylesheets="@../CSS/Login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.LoginController">
+
+    <ImageView fitHeight="111.0" fitWidth="308.0" layoutX="85.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../images/finzo%20logo.png" />
+    </ImageView>
+
+    <TextField fx:id="usernaemTxt" layoutX="104.0" layoutY="213.0" prefHeight="45.0" prefWidth="270.0" promptText="Username" styleClass="username" />
+
+    <PasswordField fx:id="PasswordTxt" layoutX="104.0" layoutY="300.0" prefHeight="45.0" prefWidth="270.0" promptText="Password" styleClass="password" />
+
+    <CheckBox fx:id="showPassword" layoutX="270.0" layoutY="359.0" mnemonicParsing="false" styleClass="show-password" text="Show Password" />
+
+    <Button fx:id="LoginBtn" layoutX="104.0" layoutY="433.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="270.0" styleClass="login-button" text="Login" />
+
+</AnchorPane>

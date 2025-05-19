@@ -9,7 +9,7 @@
     </left>
 
     <center>
-        <fx:include source="Dashborad.fxml" />
+        <fx:include source="Dashboard.fxml" />
     </center>
 
 </BorderPane>

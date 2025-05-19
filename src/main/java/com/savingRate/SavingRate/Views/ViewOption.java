@@ -3,5 +3,5 @@ package com.savingRate.SavingRate.Views;
 public enum ViewOption {
     DASHBOARD,
     ADD_RATE,
-    SETTINGS
+    READ_DATA
 }
