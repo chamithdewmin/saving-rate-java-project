@@ -7,12 +7,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../CSS/Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.DashboardController">
+<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/Dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.DashboardController">
 
     <!-- Date Filter -->
-    <DatePicker fx:id="date" layoutX="954.0" layoutY="112.0" prefHeight="40.0" prefWidth="180.0" styleClass="date-picker" />
+    <DatePicker fx:id="date" layoutX="1056.0" layoutY="42.0" prefHeight="40.0" prefWidth="180.0" styleClass="date-picker" />
+    <RadioButton fx:id="viewAllRadio" layoutX="953.0" layoutY="54.0" styleClass="allData" stylesheets="@../CSS/Dashboard.css" text="All Data" />
 
     <!-- INCOME Block -->
     <AnchorPane layoutX="52.0" layoutY="39.0" prefHeight="125.0" prefWidth="220.0" styleClass="incomeBox">
@@ -33,10 +35,10 @@
     </AnchorPane>
 
     <!-- Pie Chart -->
-    <PieChart fx:id="PieChart" layoutX="60.0" layoutY="208.0" prefHeight="366.0" prefWidth="480.0" />
+    <PieChart fx:id="PieChart" layoutX="52.0" layoutY="214.0" prefHeight="366.0" prefWidth="530.0" />
 
     <!-- Line Chart -->
-    <LineChart fx:id="line_chart" layoutX="654.0" layoutY="208.0" prefHeight="366.0" prefWidth="480.0">
+    <LineChart fx:id="line_chart" layoutX="650.0" layoutY="214.0" prefHeight="366.0" prefWidth="792.0">
         <xAxis>
             <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -46,21 +48,19 @@
     </LineChart>
 
     <!-- Total Needs -->
-    <AnchorPane layoutX="52.0" layoutY="629.0" prefHeight="125.0" prefWidth="220.0" styleClass="needsBox">
+    <AnchorPane layoutX="52.0" layoutY="669.0" prefHeight="125.0" prefWidth="220.0" styleClass="needsBox">
         <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Total Of Needs" />
         <Label fx:id="total_needs" layoutX="20.0" layoutY="25.0" prefHeight="75.0" prefWidth="180.0" styleClass="wantValue" stylesheets="@../CSS/Dashboard.css" />
     </AnchorPane>
 
     <!-- Total Wants -->
-    <AnchorPane layoutX="298.0" layoutY="629.0" prefHeight="125.0" prefWidth="220.0" styleClass="wantsBox">
+    <AnchorPane layoutX="300.0" layoutY="669.0" prefHeight="125.0" prefWidth="220.0" styleClass="wantsBox">
         <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Total Of Wants" />
         <Label fx:id="total_wants" layoutX="17.0" layoutY="25.0" prefHeight="75.0" prefWidth="186.0" styleClass="needValue" stylesheets="@../CSS/Dashboard.css" />
     </AnchorPane>
 
     <!-- Buttons -->
-    <Button layoutX="954.0" layoutY="40.0" onAction="#handleRefresh" prefHeight="46.0" prefWidth="180.0" text="Refresh" />
-    <Button layoutX="954.0" layoutY="588.0" onAction="#openAddRateWindow" prefWidth="180.0" text="Add Income/Expense" />
-    <Button layoutX="954.0" layoutY="651.0" onAction="#handleExportExcel" prefWidth="180.0" text="Export to Excel" />
-    <Button layoutX="954.0" layoutY="713.0" onAction="#handleExportPDF" prefWidth="180.0" text="Export to PDF" />
+    <Button layoutX="1262.0" layoutY="39.0" onAction="#handleRefresh" prefHeight="46.0" prefWidth="180.0" text="Refresh" />
+    <Button layoutX="1262.0" layoutY="112.0" onAction="#handleExportPDF" prefWidth="180.0" text="Export to PDF" />
 
 </AnchorPane>

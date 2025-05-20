@@ -45,11 +45,6 @@
     -fx-text-fill: #eeeeee;
 }
 
-.date-picker {
-    -fx-background-color: #292929;
-    -fx-text-fill: #ffffff;
-}
-
 .button {
     -fx-background-color: #00C6A2;
     -fx-text-fill: #ffffff;
@@ -79,7 +74,7 @@
 }
 
 .chart-content {
-    -fx-padding: 2;
+    -fx-padding: 1;
 }
 
 .chart-pie.data0 { -fx-pie-color: #00c6ff; } /* Income */
@@ -134,4 +129,34 @@
     -fx-font-size: 30px;
     -fx-font-weight: bold;
     -fx-alignment: center;
+}
+
+.allData {
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.date-picker {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #444;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 14px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #3a3a3a;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #555555;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #bbbbbb;
 }

@@ -48,13 +48,13 @@
 }
 
 #refreshButton:hover {
-    -fx-background-color: #00aaff;
+    -fx-background-color: #1DE9B6;
     -fx-scale-x: 1.03;
     -fx-scale-y: 1.03;
 }
 
 .refreshButton {
-    -fx-background-color: #00bfff;
+    -fx-background-color: #00C6A2;
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
@@ -74,3 +74,8 @@
     -fx-background-color: #222;
 }
 
+/* Highlight selected table row in red */
+.table-view .table-row-cell:selected {
+    -fx-background-color: #ff4d4d; /* Red highlight */
+    -fx-text-fill: white;
+}

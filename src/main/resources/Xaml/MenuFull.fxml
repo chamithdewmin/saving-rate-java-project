@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="menuParent" style="-fx-background-color: black;" stylesheets="@../CSS/addRate.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.MenuFullController">
+<BorderPane fx:id="menuParent" stylesheets="@../CSS/addRate.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.MenuFullController">
 
     <left>
         <fx:include source="Menu.fxml" />

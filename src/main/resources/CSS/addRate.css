@@ -12,7 +12,7 @@
 
 /* Input fields */
 .text-field {
-    -fx-background-color: #1e1e2f;
+    -fx-background-color: #3a3a3a;
     -fx-text-fill: #ffffff;
     -fx-prompt-text-fill: #aaaaaa;
     -fx-border-color: #333;
@@ -21,21 +21,12 @@
 }
 
 .combo-box {
-    -fx-background-color: #1e1e2f;
+    -fx-background-color: #3a3a3a;
     -fx-border-color: #333;
     -fx-text-fill: #ffffff;
     -fx-background-radius: 8px;
     -fx-padding: 8px;
 }
-
-.date-picker {
-    -fx-background-color: #292929;
-    -fx-text-fill: #ffffff;
-    -fx-prompt-text-fill: #aaaaaa;
-    -fx-background-radius: 8px;
-    -fx-border-color: #333;
-}
-
 /* Buttons */
 .button {
     -fx-background-color: #00C6A2;
@@ -53,7 +44,7 @@
 
 /* ListView */
 .list-view {
-    -fx-background-color: #1e1e2f;
+    -fx-background-color: #3a3a3a;
     -fx-text-fill: #ffffff;
     -fx-border-color: #333;
     -fx-background-radius: 8px;
@@ -75,7 +66,53 @@
     -fx-border-radius: 10;
 }
 
+.date-picker {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #444;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 14px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #3a3a3a;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #555555;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #bbbbbb;
+}
+
 .Cat {
+    -fx-background-color: #3a3a3a;
+    -fx-border-color: #00C6A2;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
+    -fx-text-fill: #FFFFFF; /* text inside comboBox */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Make sure the displayed text inside the ComboBox is white */
+.combo-box .text-field {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #fff;
+}
+
+/* Dropdown list styling */
+.combo-box-popup .list-view {
+    -fx-background-color: #fff;
+    -fx-text-fill: #FFFFFF;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #00C6A2;
+    -fx-text-fill: #121212;
 }

@@ -5,7 +5,7 @@
 
 /* Buttons */
 .button {
-    -fx-background-color: #00C6A2;
+    -fx-background-color: #2e7d32;
     -fx-text-fill: #ffffff;
     -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
@@ -15,6 +15,6 @@
     -fx-font-weight: bold;
 }
 .button:hover {
-    -fx-background-color: #1DE9B6;
+    -fx-background-color: #1b5e20;
 }
 

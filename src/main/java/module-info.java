@@ -8,6 +8,7 @@ module com.savingRate.SavingRate {
     requires static org.apache.poi.ooxml;
     requires static itext;
     requires mysql.connector.j;
+    requires itextpdf;
 
     opens com.savingRate.SavingRate.Model to javafx.base;
     opens com.savingRate.SavingRate.Controller to javafx.fxml;

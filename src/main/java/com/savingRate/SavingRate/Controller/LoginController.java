@@ -4,6 +4,8 @@ import com.savingRate.SavingRate.Model.Model;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class LoginController {
@@ -27,6 +29,18 @@ public class LoginController {
         setupShowPasswordToggle();
 
         LoginBtn.setOnAction(event -> handleLogin());
+
+        // Handle Enter key for login
+        usernaemTxt.setOnKeyPressed(this::handleEnterKey);
+        PasswordTxt.setOnKeyPressed(this::handleEnterKey);
+        // Also apply it to the visible password field
+        visiblePassword.setOnKeyPressed(this::handleEnterKey);
+    }
+
+    private void handleEnterKey(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            handleLogin();
+        }
     }
 
     private void handleLogin() {
@@ -49,7 +63,6 @@ public class LoginController {
     }
 
     private void setupShowPasswordToggle() {
-        // Create visible password TextField
         visiblePassword = new TextField();
         visiblePassword.setLayoutX(PasswordTxt.getLayoutX());
         visiblePassword.setLayoutY(PasswordTxt.getLayoutY());
@@ -59,14 +72,11 @@ public class LoginController {
         visiblePassword.setVisible(false);
         visiblePassword.setManaged(false);
 
-        // Sync the text between fields
         visiblePassword.textProperty().bindBidirectional(PasswordTxt.textProperty());
 
-        // Add the visible password field to the parent AnchorPane
         AnchorPane parent = (AnchorPane) PasswordTxt.getParent();
         parent.getChildren().add(visiblePassword);
 
-        // Toggle between visible and hidden password fields
         showPassword.selectedProperty().addListener((obs, wasSelected, isNowSelected) -> {
             if (isNowSelected) {
                 visiblePassword.setVisible(true);

@@ -13,10 +13,14 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import java.io.File;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DashboardController {
 
@@ -27,27 +31,48 @@ public class DashboardController {
     @FXML public Label total_wants;
     @FXML public LineChart<String, Number> line_chart;
     @FXML public DatePicker date;
-    public javafx.scene.chart.PieChart PieChart;
+    @FXML public PieChart PieChart;
+    @FXML public RadioButton viewAllRadio;
 
     @FXML
     public void initialize() {
-        loadDashboardData();
+        // Set default date and load current month data
+        date.setValue(LocalDate.now());
+        loadDashboardData(LocalDate.now(), false);
     }
 
-    private void loadDashboardData() {
+    private void loadDashboardData(LocalDate selectedDate, boolean viewAllMonths) {
         List<Income> incomes = IncomeDAO.getAllIncome();
         List<Expences> expenses = ExpenseDAO.getAllExpenses();
 
-        double totalIncome = incomes.stream().mapToDouble(Income::getValue).sum();
-        double totalExpense = expenses.stream().mapToDouble(Expences::getValue).sum();
+        List<Income> filteredIncomes = incomes.stream()
+                .filter(i -> {
+                    LocalDate d = i.getDate().toLocalDate();
+                    return viewAllMonths
+                            ? d.getYear() == selectedDate.getYear()
+                            : (d.getMonth() == selectedDate.getMonth() && d.getYear() == selectedDate.getYear());
+                })
+                .collect(Collectors.toList());
+
+        List<Expences> filteredExpenses = expenses.stream()
+                .filter(e -> {
+                    LocalDate d = e.getDate().toLocalDate();
+                    return viewAllMonths
+                            ? d.getYear() == selectedDate.getYear()
+                            : (d.getMonth() == selectedDate.getMonth() && d.getYear() == selectedDate.getYear());
+                })
+                .collect(Collectors.toList());
+
+        double totalIncome = filteredIncomes.stream().mapToDouble(Income::getValue).sum();
+        double totalExpense = filteredExpenses.stream().mapToDouble(Expences::getValue).sum();
         double saved = totalIncome - totalExpense;
 
-        double needs = expenses.stream()
+        double needs = filteredExpenses.stream()
                 .filter(e -> "Needs".equalsIgnoreCase(e.getCategory()))
                 .mapToDouble(Expences::getValue)
                 .sum();
 
-        double wants = expenses.stream()
+        double wants = filteredExpenses.stream()
                 .filter(e -> "Wants".equalsIgnoreCase(e.getCategory()))
                 .mapToDouble(Expences::getValue)
                 .sum();
@@ -55,15 +80,15 @@ public class DashboardController {
         income_value.setText(String.format("%.2f", totalIncome));
         expenses_value.setText(String.format("%.2f", totalExpense));
         saved_value.setText(String.format("%.2f", saved));
-        if (total_needs != null) total_needs.setText(String.format("%.2f", needs));
-        if (total_wants != null) total_wants.setText(String.format("%.2f", wants));
+        total_needs.setText(String.format("%.2f", needs));
+        total_wants.setText(String.format("%.2f", wants));
 
         PieChart.getData().clear();
         PieChart.getData().add(new PieChart.Data("Total Income", totalIncome));
         PieChart.getData().add(new PieChart.Data("Total Expenses", totalExpense));
         PieChart.getData().add(new PieChart.Data("Saved", saved));
 
-        populateLineChart(incomes, expenses);
+        populateLineChart(filteredIncomes, filteredExpenses);
     }
 
     private void populateLineChart(List<Income> incomes, List<Expences> expenses) {
@@ -86,15 +111,13 @@ public class DashboardController {
     }
 
     @FXML
-    public void handleExportExcel() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Excel File");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files", "*.xlsx"));
-        fileChooser.setInitialFileName("MonthlyBudget.xlsx");
-
-        File file = fileChooser.showSaveDialog(new Stage());
-        if (file != null) {
-            ExportUtility.exportToExcel(file.getAbsolutePath());
+    public void handleRefresh() {
+        LocalDate selectedDate = date.getValue();
+        if (selectedDate != null) {
+            boolean viewAll = viewAllRadio.isSelected();
+            loadDashboardData(selectedDate, viewAll);
+        } else {
+            loadDashboardData(LocalDate.now(), false);
         }
     }
 
@@ -103,11 +126,32 @@ public class DashboardController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save PDF File");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
-        fileChooser.setInitialFileName("MonthlyBudget.pdf");
+        fileChooser.setInitialFileName("Finzo_Monthly_Report.pdf");
 
         File file = fileChooser.showSaveDialog(new Stage());
         if (file != null) {
-            ExportUtility.exportToPDF(file.getAbsolutePath());
+            LocalDate selectedDate = date.getValue();
+            boolean viewAll = viewAllRadio.isSelected();
+
+            List<Income> filteredIncomes = IncomeDAO.getAllIncome().stream()
+                    .filter(i -> {
+                        LocalDate d = i.getDate().toLocalDate();
+                        return viewAll
+                                ? d.getYear() == selectedDate.getYear()
+                                : d.getMonth() == selectedDate.getMonth() && d.getYear() == selectedDate.getYear();
+                    })
+                    .collect(Collectors.toList());
+
+            List<Expences> filteredExpenses = ExpenseDAO.getAllExpenses().stream()
+                    .filter(e -> {
+                        LocalDate d = e.getDate().toLocalDate();
+                        return viewAll
+                                ? d.getYear() == selectedDate.getYear()
+                                : d.getMonth() == selectedDate.getMonth() && d.getYear() == selectedDate.getYear();
+                    })
+                    .collect(Collectors.toList());
+
+            ExportUtility.exportToPDF(file.getAbsolutePath(), filteredIncomes, filteredExpenses, selectedDate, viewAll);
         }
     }
 
@@ -122,10 +166,5 @@ public class DashboardController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    public void handleRefresh() {
-        loadDashboardData();
     }
 }
