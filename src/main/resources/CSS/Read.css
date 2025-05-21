@@ -79,3 +79,27 @@
     -fx-background-color: #ff4d4d; /* Red highlight */
     -fx-text-fill: white;
 }
+
+.date-picker {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #444;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 14px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #3a3a3a;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #555555;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #bbbbbb;
+}

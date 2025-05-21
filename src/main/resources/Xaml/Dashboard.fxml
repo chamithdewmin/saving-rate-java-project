@@ -10,11 +10,11 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/Dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.DashboardController">
+<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.DashboardController">
 
     <!-- Date Filter -->
-    <DatePicker fx:id="date" layoutX="1056.0" layoutY="42.0" prefHeight="40.0" prefWidth="180.0" styleClass="date-picker" />
-    <RadioButton fx:id="viewAllRadio" layoutX="953.0" layoutY="54.0" styleClass="allData" stylesheets="@../CSS/Dashboard.css" text="All Data" />
+    <DatePicker fx:id="date" layoutX="1098.0" layoutY="41.0" prefHeight="40.0" prefWidth="180.0" styleClass="date-picker" />
+    <RadioButton fx:id="viewAllRadio" layoutX="999.0" layoutY="53.0" styleClass="allData" stylesheets="@../CSS/Dashboard.css" text="All Data" />
 
     <!-- INCOME Block -->
     <AnchorPane layoutX="52.0" layoutY="39.0" prefHeight="125.0" prefWidth="220.0" styleClass="incomeBox">
@@ -33,12 +33,17 @@
         <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="SAVED" />
         <Label fx:id="saved_value" layoutX="20.0" layoutY="25.0" prefHeight="75.0" prefWidth="180.0" styleClass="savedValue" />
     </AnchorPane>
+    <AnchorPane layoutX="646.0" layoutY="214.0" prefHeight="410.0" prefWidth="800.0" style="-fx-background-color: #1A1A1A; -fx-background-radius: 30px;" />
+    <AnchorPane layoutX="52.0" layoutY="214.0" prefHeight="410.0" prefWidth="547.0" style="-fx-background-color: #1A1A1A; -fx-background-radius: 30px;">
+        <children>
 
-    <!-- Pie Chart -->
-    <PieChart fx:id="PieChart" layoutX="52.0" layoutY="214.0" prefHeight="366.0" prefWidth="530.0" />
+            <!-- Pie Chart -->
+            <PieChart fx:id="PieChart" layoutX="17.0" layoutY="17.0" prefHeight="376.0" prefWidth="513.0" />
+        </children>
+    </AnchorPane>
 
     <!-- Line Chart -->
-    <LineChart fx:id="line_chart" layoutX="650.0" layoutY="214.0" prefHeight="366.0" prefWidth="792.0">
+    <LineChart fx:id="line_chart" layoutX="673.0" layoutY="244.0" prefHeight="336.0" prefWidth="756.0">
         <xAxis>
             <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -60,7 +65,7 @@
     </AnchorPane>
 
     <!-- Buttons -->
-    <Button layoutX="1262.0" layoutY="39.0" onAction="#handleRefresh" prefHeight="46.0" prefWidth="180.0" text="Refresh" />
-    <Button layoutX="1262.0" layoutY="112.0" onAction="#handleExportPDF" prefWidth="180.0" text="Export to PDF" />
+    <Button layoutX="1303.0" layoutY="39.0" onAction="#handleRefresh" prefHeight="46.0" prefWidth="139.0" text="Refresh" />
+    <Button layoutX="1303.0" layoutY="112.0" onAction="#handleExportPDF" prefHeight="40.0" prefWidth="139.0" text="Export to PDF" />
 
 </AnchorPane>

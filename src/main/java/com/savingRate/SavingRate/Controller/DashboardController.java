@@ -1,3 +1,4 @@
+
 package com.savingRate.SavingRate.Controller;
 
 import com.savingRate.SavingRate.Model.ExpenseDAO;
@@ -24,15 +25,24 @@ import java.util.stream.Collectors;
 
 public class DashboardController {
 
-    @FXML public Label income_value;
-    @FXML public Label expenses_value;
-    @FXML public Label saved_value;
-    @FXML public Label total_needs;
-    @FXML public Label total_wants;
-    @FXML public LineChart<String, Number> line_chart;
-    @FXML public DatePicker date;
-    @FXML public PieChart PieChart;
-    @FXML public RadioButton viewAllRadio;
+    @FXML
+    public Label income_value;
+    @FXML
+    public Label expenses_value;
+    @FXML
+    public Label saved_value;
+    @FXML
+    public Label total_needs;
+    @FXML
+    public Label total_wants;
+    @FXML
+    public LineChart<String, Number> line_chart;
+    @FXML
+    public DatePicker date;
+    @FXML
+    public PieChart PieChart;
+    @FXML
+    public RadioButton viewAllRadio;
 
     @FXML
     public void initialize() {
@@ -152,19 +162,6 @@ public class DashboardController {
                     .collect(Collectors.toList());
 
             ExportUtility.exportToPDF(file.getAbsolutePath(), filteredIncomes, filteredExpenses, selectedDate, viewAll);
-        }
-    }
-
-    @FXML
-    public void openAddRateWindow() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Xaml/addRate.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Add Rate");
-            stage.setScene(new Scene(loader.load(), 1200, 800));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }
