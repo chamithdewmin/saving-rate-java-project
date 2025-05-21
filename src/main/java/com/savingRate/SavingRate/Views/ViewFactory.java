@@ -81,7 +81,7 @@ public class ViewFactory {
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/logo.png")));
 
             stage.setScene(scene);
-            stage.setTitle("Login - Finzo");
+            stage.setTitle("Login");
             stage.setResizable(false);
             stage.show();
         } catch (Exception e) {

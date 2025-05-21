@@ -1,9 +1,9 @@
 package com.savingRate.SavingRate.Controller;
 
 import com.savingRate.SavingRate.Model.Model;
+import com.savingRate.SavingRate.Utils.CustomAlert;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -33,7 +33,6 @@ public class LoginController {
         // Handle Enter key for login
         usernaemTxt.setOnKeyPressed(this::handleEnterKey);
         PasswordTxt.setOnKeyPressed(this::handleEnterKey);
-        // Also apply it to the visible password field
         visiblePassword.setOnKeyPressed(this::handleEnterKey);
     }
 
@@ -48,7 +47,7 @@ public class LoginController {
         String password = showPassword.isSelected() ? visiblePassword.getText() : PasswordTxt.getText();
 
         if (username.isEmpty() || password.isEmpty()) {
-            showAlert(AlertType.ERROR, "Error", "Please fill in both username and password.");
+            CustomAlert.showAlert(Alert.AlertType.ERROR, "Error", "Please fill in both username and password.");
             return;
         }
 
@@ -58,8 +57,14 @@ public class LoginController {
             // Close login window
             LoginBtn.getScene().getWindow().hide();
         } else {
-            showAlert(AlertType.ERROR, "Login Failed", "Invalid username or password.");
+            CustomAlert.showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password.");
+            clearIncomeFields();
         }
+    }
+
+    private void clearIncomeFields() {
+        usernaemTxt.clear();
+        visiblePassword.clear();
     }
 
     private void setupShowPasswordToggle() {
@@ -90,13 +95,5 @@ public class LoginController {
                 PasswordTxt.setManaged(true);
             }
         });
-    }
-
-    private void showAlert(AlertType type, String title, String message) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

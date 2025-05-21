@@ -4,6 +4,7 @@ import com.savingRate.SavingRate.Model.ExpenseDAO;
 import com.savingRate.SavingRate.Model.Expences;
 import com.savingRate.SavingRate.Model.Income;
 import com.savingRate.SavingRate.Model.IncomeDAO;
+import com.savingRate.SavingRate.Utils.CustomAlert;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -74,10 +75,19 @@ public class ReadDataController {
     private void handleDeleteIncome(ActionEvent event) {
         Income selectedIncome = incomeTable.getSelectionModel().getSelectedItem();
         if (selectedIncome != null) {
-            IncomeDAO.deleteIncome(selectedIncome.getId());
-            loadIncomeData();
+            String msg = "Date: " + selectedIncome.getDate() +
+                    "\nDescription: " + selectedIncome.getDescription() +
+                    "\nValue: " + selectedIncome.getValue();
+
+            boolean confirmed = CustomAlert.showConfirmation("Delete Confirmation", "Are you sure you want to delete this income?\n\n" + msg);
+
+            if (confirmed) {
+                IncomeDAO.deleteIncome(selectedIncome.getId());
+                loadIncomeData();
+                CustomAlert.showSuccess("Income deleted successfully.");
+            }
         } else {
-            showAlert("No Income Selected", "Please select an income record to delete.");
+            CustomAlert.showAlert("No Income Selected", "Please select an income record to delete.");
         }
     }
 
@@ -85,10 +95,20 @@ public class ReadDataController {
     private void handleDeleteExpense(ActionEvent event) {
         Expences selectedExpense = expenseTable.getSelectionModel().getSelectedItem();
         if (selectedExpense != null) {
-            ExpenseDAO.deleteExpense(selectedExpense.getId());
-            loadExpenseData();
+            String msg = "Date: " + selectedExpense.getDate() +
+                    "\nDescription: " + selectedExpense.getDescription() +
+                    "\nCategory: " + selectedExpense.getCategory() +
+                    "\nValue: " + selectedExpense.getValue();
+
+            boolean confirmed = CustomAlert.showConfirmation("Delete Confirmation", "Are you sure you want to delete this expense?\n\n" + msg);
+
+            if (confirmed) {
+                ExpenseDAO.deleteExpense(selectedExpense.getId());
+                loadExpenseData();
+                CustomAlert.showSuccess("Expense deleted successfully.");
+            }
         } else {
-            showAlert("No Expense Selected", "Please select an expense record to delete.");
+            CustomAlert.showAlert("No Expense Selected", "Please select an expense record to delete.");
         }
     }
 
@@ -97,7 +117,7 @@ public class ReadDataController {
         LocalDate selectedDate = filterDatePicker.getValue();
 
         if (selectedDate == null) {
-            showAlert("Invalid Date", "Please select a date to filter by month.");
+            CustomAlert.showAlert("Invalid Date", "Please select a date to filter by month.");
             return;
         }
 
@@ -122,13 +142,5 @@ public class ReadDataController {
 
         incomeTable.setItems(FXCollections.observableArrayList(incomeList));
         expenseTable.setItems(FXCollections.observableArrayList(expenseList));
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }
