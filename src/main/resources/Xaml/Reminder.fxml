@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/Reminder.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.ReminderController">
 
-    <TableView fx:id="reminderTable" layoutX="700.0" layoutY="106.0" prefHeight="702.0" prefWidth="759.0">
+    <TableView fx:id="reminderTable" layoutX="695.0" layoutY="107.0" prefHeight="695.0" prefWidth="759.0">
         <columns>
             <TableColumn fx:id="typeColumn" prefWidth="120.0" text="Type" />
             <TableColumn fx:id="dateColumn" prefWidth="200.0" text="Date" />
@@ -20,18 +20,25 @@
         </columns>
     </TableView>
 
-    <Label layoutX="946.0" layoutY="31.0" text="Reminder Table">
+    <Label layoutX="941.0" layoutY="27.0" text="Reminder Table">
       <styleClass>
          <String fx:value="ReminderLable" />
       </styleClass></Label>
-    <Label layoutX="175.0" layoutY="177.0" styleClass="LableTpic" text="Add Your Reminder Here" />
+    <Label layoutX="182.0" layoutY="248.0" styleClass="LableTpic" text="Add Your Reminder Here" />
 
-    <DatePicker fx:id="date" layoutX="121.0" layoutY="298.0" prefHeight="53.0" prefWidth="403.0" promptText="YYYY-MM-DD" />
-    <TextField fx:id="description" layoutX="121.0" layoutY="384.0" prefHeight="53.0" prefWidth="403.0" promptText="Description" styleClass="text-field" stylesheets="@../CSS/Reminder.css" />
-    <TextField fx:id="cost" layoutX="121.0" layoutY="474.0" prefHeight="50.0" prefWidth="403.0" promptText="Cost (Rs)" styleClass="text-field" />
+    <DatePicker fx:id="date" layoutX="121.0" layoutY="352.0" prefHeight="53.0" prefWidth="403.0" promptText="YYYY-MM-DD" />
+    <TextField fx:id="description" layoutX="121.0" layoutY="448.0" prefHeight="53.0" prefWidth="403.0" promptText="Description" styleClass="text-field" stylesheets="@../CSS/Reminder.css" />
+    <TextField fx:id="cost" layoutX="121.0" layoutY="542.0" prefHeight="50.0" prefWidth="403.0" promptText="Cost (Rs)" styleClass="text-field" />
 
-    <Button fx:id="incomeButton" layoutX="121.0" layoutY="602.0" prefHeight="50.0" prefWidth="191.0" text="Add Income Reminder" />
-    <Button fx:id="expenseButton" layoutX="327.0" layoutY="602.0" prefHeight="50.0" prefWidth="197.0" text="Add Expense Reminder" />
-    <Button fx:id="refreshButton" layoutX="1364.0" layoutY="31.0" prefWidth="95.0" text="Refresh" />
-   <Button fx:id="deleteBtn" layoutX="703.0" layoutY="31.0" prefWidth="95.0" text="Delete" />
+    <Button fx:id="incomeButton" layoutX="122.0" layoutY="655.0" prefHeight="50.0" prefWidth="191.0" text="Add Income Reminder" />
+    <Button fx:id="expenseButton" layoutX="329.0" layoutY="655.0" prefHeight="50.0" prefWidth="197.0" text="Add Expense Reminder" />
+   <Button fx:id="deleteBtn" layoutX="1359.0" layoutY="27.0" prefWidth="95.0" text="Delete" />
+    <AnchorPane layoutX="49.0" layoutY="41.0" prefHeight="125.0" prefWidth="220.0" styleClass="needsBox">
+        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Total Income" />
+        <Label fx:id="total_income" layoutX="22.0" layoutY="25.0" prefHeight="75.0" prefWidth="180.0" styleClass="wantValue" stylesheets="@../CSS/Dashboard.css" />
+    </AnchorPane>
+    <AnchorPane layoutX="330.0" layoutY="41.0" prefHeight="125.0" prefWidth="220.0" styleClass="wantsBox">
+        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Total Of Expence" />
+        <Label fx:id="total_expence" layoutX="17.0" layoutY="25.0" prefHeight="75.0" prefWidth="186.0" styleClass="needValue" stylesheets="@../CSS/Dashboard.css" />
+    </AnchorPane>
 </AnchorPane>

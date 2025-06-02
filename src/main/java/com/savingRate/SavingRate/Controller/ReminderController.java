@@ -1,4 +1,3 @@
-// ReminderController.java
 package com.savingRate.SavingRate.Controller;
 
 import com.savingRate.SavingRate.Model.Reminder;
@@ -8,10 +7,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.util.Locale;
 
 public class ReminderController {
 
+    public Label total_income;
+    public Label total_expence;
     @FXML private TableView<Reminder> reminderTable;
     @FXML private TableColumn<Reminder, String> typeColumn;
     @FXML private TableColumn<Reminder, LocalDate> dateColumn;
@@ -19,7 +23,6 @@ public class ReminderController {
     @FXML private TableColumn<Reminder, Double> costColumn;
     @FXML private Button incomeButton;
     @FXML private Button expenseButton;
-    @FXML private Button refreshButton;
     @FXML private Button deleteBtn;
     @FXML private DatePicker date;
     @FXML private TextField description;
@@ -37,7 +40,6 @@ public class ReminderController {
 
         incomeButton.setOnAction(e -> handleAddReminder("Income"));
         expenseButton.setOnAction(e -> handleAddReminder("Expense"));
-        refreshButton.setOnAction(e -> loadReminders());
         deleteBtn.setOnAction(e -> handleDeleteReminder());
 
         loadReminders();
@@ -87,11 +89,27 @@ public class ReminderController {
             ReminderDAO.deleteReminder(selected.getId());
             reminders.remove(selected);
             CustomAlert.showSuccess("Reminder deleted successfully.");
+            loadReminders();
         }
     }
 
     private void loadReminders() {
         reminders.setAll(ReminderDAO.getAllReminders());
+
+        double totalIncome = 0;
+        double totalExpense = 0;
+
+        for (Reminder reminder : reminders) {
+            if ("Income".equalsIgnoreCase(reminder.getType())) {
+                totalIncome += reminder.getCost();
+            } else if ("Expense".equalsIgnoreCase(reminder.getType())) {
+                totalExpense += reminder.getCost();
+            }
+        }
+
+        NumberFormat formatter = NumberFormat.getNumberInstance(new Locale("en", "US"));
+        total_income.setText("Rs " + formatter.format(totalIncome));
+        total_expence.setText("Rs " + formatter.format(totalExpense));
     }
 
     private void clearReminderFields() {

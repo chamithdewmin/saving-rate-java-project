@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,30 +38,34 @@ public class ReadDataController {
 
     @FXML
     public void initialize() {
-        loadIncomeData();
-        loadExpenseData();
-    }
-
-    private void loadIncomeData() {
-        List<Income> incomeList = IncomeDAO.getAllIncome();
-        ObservableList<Income> incomeObservable = FXCollections.observableArrayList(incomeList);
-
         incomeDateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         incomeDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         incomeValueCol.setCellValueFactory(new PropertyValueFactory<>("value"));
-
-        incomeTable.setItems(incomeObservable);
-    }
-
-    private void loadExpenseData() {
-        List<Expences> expenseList = ExpenseDAO.getAllExpenses();
-        ObservableList<Expences> expenseObservable = FXCollections.observableArrayList(expenseList);
 
         expenseDateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         expenseDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         expenseCategoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
         expenseValueCol.setCellValueFactory(new PropertyValueFactory<>("value"));
 
+        loadIncomeData();
+        loadExpenseData();
+    }
+
+    private void loadIncomeData() {
+        List<Income> incomeList = IncomeDAO.getAllIncome().stream()
+                .sorted(Comparator.comparing(Income::getDate))
+                .collect(Collectors.toList());
+
+        ObservableList<Income> incomeObservable = FXCollections.observableArrayList(incomeList);
+        incomeTable.setItems(incomeObservable);
+    }
+
+    private void loadExpenseData() {
+        List<Expences> expenseList = ExpenseDAO.getAllExpenses().stream()
+                .sorted(Comparator.comparing(Expences::getDate))
+                .collect(Collectors.toList());
+
+        ObservableList<Expences> expenseObservable = FXCollections.observableArrayList(expenseList);
         expenseTable.setItems(expenseObservable);
     }
 
@@ -79,7 +84,8 @@ public class ReadDataController {
                     "\nDescription: " + selectedIncome.getDescription() +
                     "\nValue: " + selectedIncome.getValue();
 
-            boolean confirmed = CustomAlert.showConfirmation("Delete Confirmation", "Are you sure you want to delete this income?\n\n" + msg);
+            boolean confirmed = CustomAlert.showConfirmation("Delete Confirmation",
+                    "Are you sure you want to delete this income?\n\n" + msg);
 
             if (confirmed) {
                 IncomeDAO.deleteIncome(selectedIncome.getId());
@@ -100,7 +106,8 @@ public class ReadDataController {
                     "\nCategory: " + selectedExpense.getCategory() +
                     "\nValue: " + selectedExpense.getValue();
 
-            boolean confirmed = CustomAlert.showConfirmation("Delete Confirmation", "Are you sure you want to delete this expense?\n\n" + msg);
+            boolean confirmed = CustomAlert.showConfirmation("Delete Confirmation",
+                    "Are you sure you want to delete this expense?\n\n" + msg);
 
             if (confirmed) {
                 ExpenseDAO.deleteExpense(selectedExpense.getId());
@@ -124,23 +131,23 @@ public class ReadDataController {
         int month = selectedDate.getMonthValue();
         int year = selectedDate.getYear();
 
-        // Filter Income
-        List<Income> incomeList = IncomeDAO.getAllIncome().stream()
+        List<Income> filteredIncome = IncomeDAO.getAllIncome().stream()
                 .filter(i -> {
                     LocalDate d = i.getDate().toLocalDate();
                     return d.getMonthValue() == month && d.getYear() == year;
                 })
+                .sorted(Comparator.comparing(Income::getDate))
                 .collect(Collectors.toList());
 
-        // Filter Expenses
-        List<Expences> expenseList = ExpenseDAO.getAllExpenses().stream()
+        List<Expences> filteredExpense = ExpenseDAO.getAllExpenses().stream()
                 .filter(e -> {
                     LocalDate d = e.getDate().toLocalDate();
                     return d.getMonthValue() == month && d.getYear() == year;
                 })
+                .sorted(Comparator.comparing(Expences::getDate))
                 .collect(Collectors.toList());
 
-        incomeTable.setItems(FXCollections.observableArrayList(incomeList));
-        expenseTable.setItems(FXCollections.observableArrayList(expenseList));
+        incomeTable.setItems(FXCollections.observableArrayList(filteredIncome));
+        expenseTable.setItems(FXCollections.observableArrayList(filteredExpense));
     }
 }

@@ -137,6 +137,7 @@
     -fx-font-size: 13px;
 }
 
+/* DatePicker styling */
 .date-picker {
     -fx-background-color: #1e1e1e;
     -fx-text-fill: #ffffff;
@@ -147,16 +148,101 @@
     -fx-font-size: 14px;
 }
 
+/* Entire popup */
+.date-picker-popup {
+    -fx-background-color: #0f0f0f;
+    -fx-border-color: #2a2a2a;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10;
+}
+
+/* Header section (month & year) */
+.date-picker .month-year-pane {
+    -fx-background-color: #121212;
+    -fx-padding: 8 0;
+    -fx-border-color: #1e1e1e;
+}
+
+.date-picker .label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Navigation buttons (month/year arrows) */
+.date-picker .left-button,
+.date-picker .right-button {
+    -fx-background-color: #1a1a1a;
+    -fx-background-radius: 6;
+    -fx-padding: 4;
+}
+
+.date-picker .left-button:hover,
+.date-picker .right-button:hover {
+    -fx-background-color: #2c2c2c;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #ffffff;
+}
+
+/* Date cells */
+.date-picker .calendar-grid {
+    -fx-background-color: #0f0f0f;
+    -fx-text-fill: #ffffff;
+}
+
+.date-picker .day-cell {
+    -fx-background-color: #0f0f0f;
+    -fx-text-fill: #dddddd;
+    -fx-font-size: 13px;
+    -fx-alignment: center;
+    -fx-border-radius: 5;
+}
+
+.date-picker .day-cell:hover {
+    -fx-background-color: #1f1f1f;
+    -fx-text-fill: #ffffff;
+}
+
+/* Today’s highlight */
+.date-picker .day-cell.today {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: #00e676;
+}
+
+/* Selected day */
+.date-picker .day-cell:selected {
+    -fx-background-color: #00C6A2;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+/* Disabled days */
+.date-picker .day-cell:disabled {
+    -fx-text-fill: #555555;
+}
+
+/* Text field style */
+.date-picker .text-field {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #f0f0f0;
+    -fx-prompt-text-fill: #888888;
+    -fx-border-color: #333;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 10;
+    -fx-font-size: 13px;
+}
+
+/* Arrow button beside text field */
 .date-picker .arrow-button {
-    -fx-background-color: #3a3a3a;
+    -fx-background-color: #1a1a1a;
+    -fx-background-radius: 6;
 }
 
 .date-picker .arrow-button:hover {
-    -fx-background-color: #555555;
+    -fx-background-color: #2c2c2c;
 }
 
-.date-picker .text-field {
-    -fx-background-color: transparent;
-    -fx-text-fill: #ffffff;
-    -fx-prompt-text-fill: #bbbbbb;
-}

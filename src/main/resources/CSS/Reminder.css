@@ -1,9 +1,19 @@
-/* General Labels */
+/* ============================= */
+/*        GENERAL LABELS         */
+/* ============================= */
 .label {
     -fx-text-fill: #F0F0F0;
 }
 
-/* Root background and font */
+.LableTpic {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+/* ============================= */
+/*        ROOT STYLING           */
+/* ============================= */
 .root {
     -fx-background-color: #121212;
     -fx-font-family: "JetBrains Mono", "Consolas", sans-serif;
@@ -38,7 +48,7 @@
 }
 
 /* ============================= */
-/*        SCROLLBARS             */
+/*         SCROLLBAR STYLE       */
 /* ============================= */
 .scroll-bar:vertical,
 .scroll-bar:horizontal {
@@ -46,7 +56,7 @@
 }
 
 /* ============================= */
-/*        INPUT FIELDS           */
+/*         INPUT FIELDS          */
 /* ============================= */
 .text-field {
     -fx-background-color: #3a3a3a;
@@ -58,8 +68,16 @@
     -fx-padding: 8px;
 }
 
+/* Specific input field radius overrides */
+.desTxt,
+.rsTxt,
+.Date {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
 /* ============================= */
-/*        DATE PICKER            */
+/*         DATE PICKER           */
 /* ============================= */
 .date-picker {
     -fx-background-color: #1e1e1e;
@@ -71,22 +89,112 @@
     -fx-font-size: 14px;
 }
 
+.date-picker-popup {
+    -fx-background-color: #0f0f0f;
+    -fx-border-color: #2a2a2a;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10;
+}
+
+/* Header section (month/year) */
+.date-picker .month-year-pane {
+    -fx-background-color: #121212;
+    -fx-padding: 8 0;
+    -fx-border-color: #1e1e1e;
+}
+
+.date-picker .label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Navigation arrows */
+.date-picker .left-button,
+.date-picker .right-button {
+    -fx-background-color: #1a1a1a;
+    -fx-background-radius: 6;
+    -fx-padding: 4;
+}
+
+.date-picker .left-button:hover,
+.date-picker .right-button:hover {
+    -fx-background-color: #2c2c2c;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #ffffff;
+}
+
+/* Calendar Grid (Days) */
+.date-picker .calendar-grid {
+    -fx-background-color: #0f0f0f;
+    -fx-text-fill: #ffffff;
+}
+
+.date-picker .calendar-grid .label {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-background-radius: 4;
+    -fx-padding: 4;
+}
+
+/* Day Cells */
+.date-picker .day-cell {
+    -fx-background-color: #0f0f0f;
+    -fx-text-fill: #dddddd;
+    -fx-font-size: 13px;
+    -fx-alignment: center;
+    -fx-border-radius: 5;
+}
+
+.date-picker .day-cell:hover {
+    -fx-background-color: #1f1f1f;
+    -fx-text-fill: #ffffff;
+}
+
+.date-picker .day-cell.today {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: #00e676;
+}
+
+.date-picker .day-cell:selected {
+    -fx-background-color: #00C6A2;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+.date-picker .day-cell:disabled {
+    -fx-text-fill: #555555;
+}
+
+/* DatePicker input field */
+.date-picker .text-field {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #f0f0f0;
+    -fx-prompt-text-fill: #888888;
+    -fx-border-color: #333;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 10;
+    -fx-font-size: 13px;
+}
+
+/* DatePicker dropdown arrow */
 .date-picker .arrow-button {
-    -fx-background-color: #3a3a3a;
+    -fx-background-color: #1a1a1a;
+    -fx-background-radius: 6;
 }
 
 .date-picker .arrow-button:hover {
-    -fx-background-color: #555555;
-}
-
-.date-picker .text-field {
-    -fx-background-color: transparent;
-    -fx-text-fill: #ffffff;
-    -fx-prompt-text-fill: #bbbbbb;
+    -fx-background-color: #2c2c2c;
 }
 
 /* ============================= */
-/*            BUTTONS            */
+/*             BUTTONS           */
 /* ============================= */
 .button {
     -fx-background-color: #00C6A2;
@@ -104,24 +212,21 @@
 }
 
 /* ============================= */
-/*       CUSTOM TEXTFIELD IDs    */
+/*        DASHBOARD BOXES        */
 /* ============================= */
-.desTxt,
-.rsTxt,
-.Date {
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
+.needsBox {
+    -fx-background-color: linear-gradient(to right, #4caf50, #388e3c);
+    -fx-background-radius: 15px;
+    -fx-padding: 12px;
 }
 
-/* ============================= */
-/*         LABEL HEADINGS        */
-/* ============================= */
-.LableTpic {
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 25px;
-    -fx-font-weight: bold;
+.wantsBox {
+    -fx-background-color: linear-gradient(to right, #b02727, #a21f1f);
+    -fx-background-radius: 15px;
+    -fx-padding: 12px;
 }
 
+/* Income label */
 .ReminderLable {
     -fx-text-fill: #4cd137;
     -fx-font-size: 36px;

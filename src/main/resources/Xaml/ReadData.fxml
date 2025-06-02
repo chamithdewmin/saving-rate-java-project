@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1500.0" styleClass="root" stylesheets="@../CSS/Read.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.ReadDataController">
+<AnchorPane prefHeight="850.0" prefWidth="1500.0" styleClass="root" stylesheets="@../CSS/Read.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.ReadDataController">
 
     <!-- Income Table -->
     <TableView fx:id="incomeTable" layoutX="74.0" layoutY="125.0" prefHeight="616.0" prefWidth="630.0">
@@ -29,15 +29,15 @@
     </TableView>
 
     <!-- Section Labels -->
-    <Label layoutX="272.0" layoutY="31.0" prefHeight="73.0" prefWidth="235.0" styleClass="incomeLable" text="Income Table" />
-    <Label layoutX="977.0" layoutY="31.0" prefHeight="73.0" prefWidth="267.0" styleClass="ExpenceLable" text="Expenses Table" />
+    <Label layoutX="272.0" layoutY="32.0" prefHeight="73.0" prefWidth="235.0" styleClass="incomeLable" text="Income Table" />
+    <Label layoutX="996.0" layoutY="32.0" prefHeight="73.0" prefWidth="267.0" styleClass="ExpenceLable" text="Expenses Table" />
 
     <!-- Refresh and Filter Controls -->
-    <DatePicker fx:id="filterDatePicker" layoutX="578.0" layoutY="36.0" prefWidth="200.0" />
-    <Button layoutX="819.0" layoutY="36.0" onAction="#handleFilterByMonth" prefWidth="80.0" text="Filter" />
-    <Button fx:id="refreshButton" layoutX="1352.0" layoutY="28.0" onAction="#handleRefresh" prefHeight="40" prefWidth="120" styleClass="refreshButton" text="Refresh" />
+    <DatePicker fx:id="filterDatePicker" layoutX="571.0" layoutY="37.0" prefHeight="42.0" prefWidth="267.0" promptText="YYYY-MM-DD" />
+    <Button layoutX="858.0" layoutY="37.0" onAction="#handleFilterByMonth" prefHeight="42.0" prefWidth="80.0" text="Filter" />
+    <Button fx:id="refreshButton" layoutX="1299.0" layoutY="756.0" onAction="#handleRefresh" prefHeight="40" prefWidth="120" styleClass="refreshButton" text="Refresh" />
 
     <!-- Delete Buttons -->
-    <Button fx:id="deleteIncomeBtn" layoutX="74.0" layoutY="758.0" onAction="#handleDeleteIncome" prefHeight="35" prefWidth="153.0" text="Delete Income" />
+    <Button fx:id="deleteIncomeBtn" layoutX="74.0" layoutY="758.0" onAction="#handleDeleteIncome" prefHeight="35" prefWidth="153.0" stylesheets="@../CSS/Read.css" text="Delete Income" />
     <Button fx:id="deleteExpenseBtn" layoutX="795.0" layoutY="758.0" onAction="#handleDeleteExpense" prefHeight="35" prefWidth="143.0" text="Delete Expense" />
 </AnchorPane>
