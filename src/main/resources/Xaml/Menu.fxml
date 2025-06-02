@@ -3,12 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="800.0" prefWidth="250.0" styleClass="root" stylesheets="@../CSS/Menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.MenuController">
+<AnchorPane prefHeight="800.0" prefWidth="250.0" styleClass="root" stylesheets="@../CSS/Menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.MenuController">
 
    <Button fx:id="dashboardButton" layoutX="25.0" layoutY="60.0" prefWidth="200.0" styleClass="Button" stylesheets="@../CSS/Menu.css" text="Dashboard" />
 
    <Button fx:id="AddRateButton" layoutX="25.0" layoutY="120.0" prefWidth="200.0" text="Add Income/Expense" />
 
    <Button fx:id="SettingButton" layoutX="25.0" layoutY="180.0" prefWidth="200.0" text="Read Data" />
+   <Button fx:id="reminderBtn" layoutX="25.0" layoutY="241.0" prefWidth="200.0" text="Reminders" />
 
 </AnchorPane>

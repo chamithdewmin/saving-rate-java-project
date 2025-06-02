@@ -1,0 +1,129 @@
+/* General Labels */
+.label {
+    -fx-text-fill: #F0F0F0;
+}
+
+/* Root background and font */
+.root {
+    -fx-background-color: #121212;
+    -fx-font-family: "JetBrains Mono", "Consolas", sans-serif;
+}
+
+/* ============================= */
+/*         TABLEVIEW STYLE       */
+/* ============================= */
+.table-view {
+    -fx-background-color: #1A1A1A;
+    -fx-border-color: #2C2C2C;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #F0F0F0;
+}
+
+.table-view .column-header {
+    -fx-background-color: #242424;
+    -fx-text-fill: #00C6A2;
+}
+
+.table-view .cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 14px;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #ff4d4d;
+    -fx-text-fill: white;
+}
+
+/* ============================= */
+/*        SCROLLBARS             */
+/* ============================= */
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: #222;
+}
+
+/* ============================= */
+/*        INPUT FIELDS           */
+/* ============================= */
+.text-field {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #aaaaaa;
+    -fx-border-color: #333;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8px;
+}
+
+/* ============================= */
+/*        DATE PICKER            */
+/* ============================= */
+.date-picker {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #444;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 14px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #3a3a3a;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #555555;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #bbbbbb;
+}
+
+/* ============================= */
+/*            BUTTONS            */
+/* ============================= */
+.button {
+    -fx-background-color: #00C6A2;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(one-pass-box, #00000088, 4, 0, 2, 2);
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #1DE9B6;
+}
+
+/* ============================= */
+/*       CUSTOM TEXTFIELD IDs    */
+/* ============================= */
+.desTxt,
+.rsTxt,
+.Date {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+/* ============================= */
+/*         LABEL HEADINGS        */
+/* ============================= */
+.LableTpic {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+.ReminderLable {
+    -fx-text-fill: #4cd137;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+}

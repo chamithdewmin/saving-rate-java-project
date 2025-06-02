@@ -13,6 +13,7 @@ public class ViewFactory {
     private AnchorPane dashboardView;
     private AnchorPane incomeExpensesView;
     private AnchorPane settingView;
+    private AnchorPane reminderView;
 
     public ObjectProperty<ViewOption> getMenuItem() {
         return menuItem;
@@ -49,6 +50,17 @@ public class ViewFactory {
             }
         }
         return settingView;
+    }
+
+    public AnchorPane showReminderView() {
+        if (reminderView == null) {
+            try {
+                reminderView = new FXMLLoader(getClass().getResource("/Xaml/Reminder.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return reminderView;
     }
 
     public void fullWindow() {

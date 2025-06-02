@@ -10,7 +10,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.DashboardController">
+<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/Dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.DashboardController">
 
     <!-- Date Filter -->
     <DatePicker fx:id="date" layoutX="1098.0" layoutY="41.0" prefHeight="40.0" prefWidth="180.0" styleClass="date-picker" />
