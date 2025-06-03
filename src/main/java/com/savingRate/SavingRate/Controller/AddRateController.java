@@ -21,7 +21,6 @@ public class AddRateController {
     @FXML private DatePicker expens_date;
     @FXML private ComboBox<String> categoryCombo;
 
-    @FXML private ListView<String> expens_list;
     @FXML private Button search_button;
     @FXML private TextField search_box;
     @FXML private ComboBox<String> search_list;
@@ -73,7 +72,6 @@ public class AddRateController {
             expense.setCategory(categoryCombo.getValue());
 
             ExpenseDAO.insertExpense(expense);
-            expens_list.getItems().add(expense.getDescription() + " - " + expense.getCategory());
             CustomAlert.showSuccess("Expense Added Successfully!");
             clearExpenseFields();
         } catch (Exception e) {

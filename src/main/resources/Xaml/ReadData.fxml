@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1500.0" styleClass="root" stylesheets="@../CSS/Read.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.ReadDataController">
+<AnchorPane prefHeight="850.0" prefWidth="1500.0" styleClass="root" stylesheets="@../CSS/Read.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.ReadDataController">
 
     <!-- Income Table -->
     <TableView fx:id="incomeTable" layoutX="74.0" layoutY="125.0" prefHeight="616.0" prefWidth="630.0">

@@ -5,6 +5,12 @@
     -fx-text-fill: #F0F0F0;
 }
 
+.label-title {
+    -fx-text-fill: #F0F0F0;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
 .LableTpic {
     -fx-text-fill: #ffffff;
     -fx-font-size: 25px;

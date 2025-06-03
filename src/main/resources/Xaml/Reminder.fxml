@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/Reminder.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.ReminderController">
+<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/Reminder.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.ReminderController">
 
     <TableView fx:id="reminderTable" layoutX="695.0" layoutY="107.0" prefHeight="695.0" prefWidth="759.0">
         <columns>
@@ -33,12 +33,12 @@
     <Button fx:id="incomeButton" layoutX="122.0" layoutY="655.0" prefHeight="50.0" prefWidth="191.0" text="Add Income Reminder" />
     <Button fx:id="expenseButton" layoutX="329.0" layoutY="655.0" prefHeight="50.0" prefWidth="197.0" text="Add Expense Reminder" />
    <Button fx:id="deleteBtn" layoutX="1359.0" layoutY="27.0" prefWidth="95.0" text="Delete" />
-    <AnchorPane layoutX="49.0" layoutY="41.0" prefHeight="125.0" prefWidth="220.0" styleClass="needsBox">
-        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Total Income" />
+    <AnchorPane layoutX="87.0" layoutY="41.0" prefHeight="125.0" prefWidth="220.0" styleClass="needsBox">
+        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" stylesheets="@../CSS/Reminder.css" text="Total Income" />
         <Label fx:id="total_income" layoutX="22.0" layoutY="25.0" prefHeight="75.0" prefWidth="180.0" styleClass="wantValue" stylesheets="@../CSS/Dashboard.css" />
     </AnchorPane>
-    <AnchorPane layoutX="330.0" layoutY="41.0" prefHeight="125.0" prefWidth="220.0" styleClass="wantsBox">
-        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Total Of Expence" />
+    <AnchorPane layoutX="329.0" layoutY="41.0" prefHeight="125.0" prefWidth="220.0" styleClass="wantsBox">
+        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" stylesheets="@../CSS/Reminder.css" text="Total Expence" />
         <Label fx:id="total_expence" layoutX="17.0" layoutY="25.0" prefHeight="75.0" prefWidth="186.0" styleClass="needValue" stylesheets="@../CSS/Dashboard.css" />
     </AnchorPane>
 </AnchorPane>
