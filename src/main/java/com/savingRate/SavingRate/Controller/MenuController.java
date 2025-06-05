@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 public class MenuController {
 
     public Button reminderBtn;
+    public Button invoiceBtn;
     @FXML
     private Button dashboardButton;
 
@@ -23,6 +24,8 @@ public class MenuController {
         AddRateButton.setOnAction(e -> Model.getInstance().getViewFactory().getMenuItem().set(ViewOption.ADD_RATE));
         SettingButton.setOnAction(e -> Model.getInstance().getViewFactory().getMenuItem().set(ViewOption.READ_DATA));
         reminderBtn.setOnAction(e -> Model.getInstance().getViewFactory().getMenuItem().set(ViewOption.REMINDER));
+        invoiceBtn.setOnAction(e -> Model.getInstance().getViewFactory().getMenuItem().set(ViewOption.INVOICE));
+
 
     }
 }

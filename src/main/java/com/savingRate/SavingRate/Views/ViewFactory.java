@@ -14,6 +14,7 @@ public class ViewFactory {
     private AnchorPane incomeExpensesView;
     private AnchorPane settingView;
     private AnchorPane reminderView;
+    private AnchorPane invoiceView;
 
     public ObjectProperty<ViewOption> getMenuItem() {
         return menuItem;
@@ -61,6 +62,17 @@ public class ViewFactory {
             }
         }
         return reminderView;
+    }
+
+    public AnchorPane showInvoiceView() {
+        if (invoiceView == null) {
+            try {
+                invoiceView = new FXMLLoader(getClass().getResource("/Xaml/Invoice.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return invoiceView;
     }
 
     public void fullWindow() {

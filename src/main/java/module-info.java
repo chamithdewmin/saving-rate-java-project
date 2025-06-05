@@ -6,7 +6,6 @@ module com.savingRate.SavingRate {
     // ✅ Add these to fix the read errors
     requires static org.apache.poi.poi;
     requires static org.apache.poi.ooxml;
-    requires static itext;
     requires mysql.connector.j;
     requires itextpdf;
 

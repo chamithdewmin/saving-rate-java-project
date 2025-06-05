@@ -4,5 +4,6 @@ public enum ViewOption {
     DASHBOARD,
     ADD_RATE,
     READ_DATA,
-    REMINDER
+    REMINDER,
+    INVOICE
 }

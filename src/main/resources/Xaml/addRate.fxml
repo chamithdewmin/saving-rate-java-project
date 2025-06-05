@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="root" stylesheets="@../CSS/addRate.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.AddRateController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="root" stylesheets="@../CSS/addRate.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.AddRateController">
 
    <!-- Income Section -->
    <DatePicker fx:id="income_Date" layoutX="75.0" layoutY="103.0" prefHeight="49.0" prefWidth="249.0" promptText="YYYY-MM-DD" styleClass="Date" stylesheets="@../CSS/addRate.css" />
