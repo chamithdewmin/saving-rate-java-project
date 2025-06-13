@@ -8,33 +8,23 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/invoice.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.InvoiceController">
+<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/invoice.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.InvoiceController">
 
-    <!-- Invoice Table -->
     <TableView fx:id="invoiceTable" layoutX="53.0" layoutY="98.0" prefHeight="694.0" prefWidth="661.0">
         <columns>
-            <TableColumn fx:id="dateColum" prefWidth="169.0" text="Date" />
-            <TableColumn fx:id="desColum" prefWidth="339.0" text="Description" />
-            <TableColumn fx:id="costColum" prefWidth="152.0" text="Cost" />
+            <TableColumn fx:id="dateColum" prefWidth="104.0" text="Date" />
+            <TableColumn fx:id="desColum" prefWidth="317.0" text="Service Description" />
+            <TableColumn fx:id="typeColume" prefWidth="119.0" text="Payment Status" />
+            <TableColumn fx:id="costColum" prefWidth="119.0" text="Amount (Rs)" />
         </columns>
     </TableView>
 
-    <!-- Add Button -->
-    <Button fx:id="addBtn" layoutX="759.0" layoutY="377.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="48.0" prefWidth="105.0" text="Add" />
-
-    <!-- Invoice List View -->
+    <Button fx:id="addBtn" layoutX="737.0" layoutY="382.0" onAction="#handleAdd" prefHeight="48.0" prefWidth="138.0" text="Add to Invoice" />
+    <Button fx:id="removeBtn" layoutX="736.0" layoutY="446.0" onAction="#handleRemove" prefHeight="48.0" prefWidth="141.0" text="Undo Add" />
+    <Button fx:id="exportBtn" layoutX="1264.0" layoutY="29.0" onAction="#handleExport" prefHeight="48.0" prefWidth="191.0" text="Generate Invoice PDF" />
+    <Button fx:id="RefreshBtn" layoutX="560.0" layoutY="29.0" onAction="#handleRefresh" prefHeight="48.0" prefWidth="154.0" text="Reload Records" />
+    <TextField fx:id="nameTxt" layoutX="903.0" layoutY="29.0" prefHeight="48.0" prefWidth="293.0" promptText="Client Name" />
     <ListView fx:id="listView" layoutX="903.0" layoutY="98.0" prefHeight="694.0" prefWidth="552.0" />
+    <Label layoutX="186.0" layoutY="38.0" styleClass="ExpaensLabelTopic" text="Completed &amp; Pending Records List" />
 
-    <!-- Export PDF Button -->
-    <Button fx:id="exportBtn" layoutX="1317.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleExport" prefHeight="48.0" prefWidth="138.0" text="Export PDF" />
-
-    <!-- Header Label -->
-    <Label layoutX="222.0" layoutY="38.0" styleClass="ExpaensLabelTopic" text="Add your Invoice data in this table" />
-
-    <!-- Remove Button -->
-    <Button fx:id="removeBtn" layoutX="759.0" layoutY="445.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="48.0" prefWidth="105.0" text="Remove" />
-
-    <!-- ✅ Corrected Refresh Button to call handleRefresh -->
-    <Button fx:id="RefreshBtn" layoutX="609.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleRefresh" prefHeight="48.0" prefWidth="105.0" text="Refresh" />
-   <TextField fx:id="nameTxt" layoutX="903.0" layoutY="29.0" prefHeight="48.0" prefWidth="293.0" promptText="Cleinet name" />
 </AnchorPane>

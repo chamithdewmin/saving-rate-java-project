@@ -3,6 +3,7 @@ package com.savingRate.SavingRate.Utils;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import com.savingRate.SavingRate.Model.Income;
+import com.savingRate.SavingRate.Model.InvoiceItem;
 
 import java.io.FileOutputStream;
 import java.time.LocalDate;
@@ -11,20 +12,25 @@ import java.util.List;
 public class InvoiceUtillty {
 
     public static void exportIncomeInvoice(String filePath, List<Income> incomeList, String invoiceNumber, LocalDate date, String clientName) {
+        List<InvoiceItem> itemList = incomeList.stream()
+                .map(i -> new InvoiceItem(i.getDate().toLocalDate(), i.getDescription(), i.getValue(), false))
+                .toList();
+        exportUnifiedInvoice(filePath, itemList, invoiceNumber, date, clientName);
+    }
+
+    public static void exportUnifiedInvoice(String filePath, List<InvoiceItem> items, String invoiceNumber, LocalDate date, String clientName) {
         Document document = new Document(PageSize.A4, 40, 40, 10, 10);
 
         try {
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
+            PdfWriter.getInstance(document, new FileOutputStream(filePath));
             document.open();
 
-            // COLORS
             BaseColor darkGreen = new BaseColor(0, 128, 100);
             BaseColor lightGreen = new BaseColor(220, 255, 244);
             BaseColor white = BaseColor.WHITE;
             BaseColor black = BaseColor.BLACK;
             BaseColor gray = new BaseColor(100, 100, 100);
 
-            // FONTS
             Font logoFont = new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD, darkGreen);
             Font invoiceFont = new Font(Font.FontFamily.HELVETICA, 25, Font.BOLD, darkGreen);
             Font subTextFont = new Font(Font.FontFamily.HELVETICA, 11, Font.NORMAL, black);
@@ -34,15 +40,14 @@ public class InvoiceUtillty {
             Font boldGreen = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, darkGreen);
             Font italicGray = new Font(Font.FontFamily.HELVETICA, 9, Font.ITALIC, gray);
 
-            // ===== LOGO LEFT / INVOICE TITLE + DETAILS RIGHT =====
             PdfPTable headerTable = new PdfPTable(2);
             headerTable.setWidthPercentage(100);
             headerTable.setWidths(new float[]{2f, 3f});
 
-            // LOGO CELL
             PdfPCell logoCell = new PdfPCell();
             logoCell.setBorder(Rectangle.NO_BORDER);
             logoCell.setVerticalAlignment(Element.ALIGN_TOP);
+
             try {
                 Image logo = Image.getInstance("src/main/resources/images/logozo.png");
                 logo.scaleToFit(150, 150);
@@ -54,35 +59,32 @@ public class InvoiceUtillty {
                 logoCell.addElement(altLogo);
             }
 
-            // INVOICE TITLE + DETAILS (RIGHT ALIGNED)
             PdfPCell invoiceCell = new PdfPCell();
             invoiceCell.setBorder(Rectangle.NO_BORDER);
-            invoiceCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
             invoiceCell.setVerticalAlignment(Element.ALIGN_TOP);
 
             Paragraph title = new Paragraph("INVOICE", invoiceFont);
             title.setAlignment(Element.ALIGN_RIGHT);
             invoiceCell.addElement(title);
+            invoiceCell.addElement(new Paragraph(" "));
 
-            Paragraph idLine = new Paragraph("INVOICE #: " + invoiceNumber, cellFont);
-            idLine.setAlignment(Element.ALIGN_RIGHT);
-            invoiceCell.addElement(idLine);
+            Paragraph invNum = new Paragraph("INVOICE #: " + invoiceNumber, cellFont);
+            invNum.setAlignment(Element.ALIGN_RIGHT);
+            invoiceCell.addElement(invNum);
 
-            Paragraph dateLine = new Paragraph("DATE: " + date.toString(), cellFont);
-            dateLine.setAlignment(Element.ALIGN_RIGHT);
-            invoiceCell.addElement(dateLine);
+            Paragraph invDate = new Paragraph("DATE: " + date.toString(), cellFont);
+            invDate.setAlignment(Element.ALIGN_RIGHT);
+            invoiceCell.addElement(invDate);
 
-            Paragraph dueLine = new Paragraph("DUE DATE: " + date.plusDays(10), cellFont);
-            dueLine.setAlignment(Element.ALIGN_RIGHT);
-            invoiceCell.addElement(dueLine);
+            Paragraph dueDate = new Paragraph("DUE DATE: " + date.plusDays(10), cellFont);
+            dueDate.setAlignment(Element.ALIGN_RIGHT);
+            invoiceCell.addElement(dueDate);
 
             headerTable.addCell(logoCell);
             headerTable.addCell(invoiceCell);
             document.add(headerTable);
-
             document.add(new Paragraph(" "));
 
-            // ===== CLIENT INFO =====
             PdfPTable info = new PdfPTable(1);
             info.setWidthPercentage(100);
             info.setSpacingBefore(5);
@@ -97,7 +99,6 @@ public class InvoiceUtillty {
             document.add(info);
             document.add(new Paragraph(" "));
 
-            // ===== ITEM TABLE =====
             PdfPTable table = new PdfPTable(3);
             table.setWidthPercentage(100);
             table.setWidths(new int[]{2, 6, 2});
@@ -114,16 +115,16 @@ public class InvoiceUtillty {
 
             boolean even = true;
             double subTotal = 0;
-            for (Income income : incomeList) {
+            for (InvoiceItem item : items) {
                 BaseColor bg = even ? white : lightGreen;
-                addStyledCell(table, income.getDate().toString(), cellFont, bg);
-                addStyledCell(table, income.getDescription(), cellFont, bg);
-                addStyledCell(table, String.format("%.2f", income.getValue()), cellFont, bg);
-                subTotal += income.getValue();
+                addStyledCell(table, item.getDate().toString(), cellFont, bg);
+                addStyledCell(table, item.getDescription(), cellFont, bg);
+                addStyledCell(table, String.format("%.2f", item.getValue()), cellFont, bg);
+                subTotal += item.getValue();
                 even = !even;
             }
 
-            if (incomeList.isEmpty()) {
+            if (items.isEmpty()) {
                 PdfPCell empty = new PdfPCell(new Phrase("No records available.", cellFont));
                 empty.setColspan(3);
                 empty.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -135,7 +136,6 @@ public class InvoiceUtillty {
             document.add(table);
             document.add(new Paragraph(" "));
 
-            // ===== TOTALS TABLE =====
             double tax = subTotal * 0;
             double discount = subTotal * 0;
             double total = subTotal + tax - discount;
@@ -149,8 +149,8 @@ public class InvoiceUtillty {
 
             totals.addCell(getNoBorderCell("Sub Total", cellFont));
             totals.addCell(getNoBorderCell("Rs. " + String.format("%.2f", subTotal), cellFont));
-            totals.addCell(getNoBorderCell("Tax (0%)", cellFont));
-            totals.addCell(getNoBorderCell("Rs. " + String.format("%.2f", tax), cellFont));
+//            totals.addCell(getNoBorderCell("Tax (0%)", cellFont));
+//            totals.addCell(getNoBorderCell("Rs. " + String.format("%.2f", tax), cellFont));
             totals.addCell(getNoBorderCell("Discount (0%)", cellFont));
             totals.addCell(getNoBorderCell("Rs. " + String.format("%.2f", discount), cellFont));
             totals.addCell(getNoBorderCell("Grand Total", boldBlack));
@@ -159,18 +159,16 @@ public class InvoiceUtillty {
             document.add(totals);
             document.add(new Paragraph(" "));
 
-            // ===== FOOTER =====
             document.add(new Paragraph("Payment Details", boldBlack));
-            document.add(new Paragraph("Bank: People's Bank \nAccount No: 0123456789 \nName: SGDC DEWMIN\nBranch: Tissamaharama", cellFont));
+            document.add(new Paragraph("Bank: NSB Bank \nAccount No: 100970310425\nName: S G D C DEWMIN\nBranch: Tissamaharama", cellFont));
             document.add(new Paragraph("Please make the payment by due date.", italicGray));
             document.add(new Paragraph(" "));
 
             document.add(new Paragraph("Thank you for your business!", boldGreen));
             document.add(new Paragraph("If you have any questions, contact us at: logozo.info@gmail.com | www.logozoai.com", italicGray));
 
-            // ===== SEAL =====
             try {
-                Image seal = Image.getInstance("src/main/resources/images/redSeal.png");
+                Image seal = Image.getInstance("src/main/resources/images/logozoseal.png");
                 seal.scaleToFit(130, 130);
                 seal.setAlignment(Image.ALIGN_RIGHT);
                 document.add(seal);

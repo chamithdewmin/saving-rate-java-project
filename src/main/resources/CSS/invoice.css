@@ -110,3 +110,31 @@
 .list-cell:focused {
     -fx-border-color: #00C6A2;
 }
+
+.table-cell.type-complete {
+    -fx-text-fill: green;
+    -fx-font-weight: bold;
+}
+
+.table-cell.type-pending {
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #aaaaaa;
+    -fx-border-color: #333;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8px;
+}
+
+/* Specific input field radius overrides */
+.desTxt,
+.rsTxt,
+.Date {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}

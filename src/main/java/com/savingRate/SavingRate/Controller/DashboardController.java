@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -43,6 +44,7 @@ public class DashboardController {
     public PieChart PieChart;
     @FXML
     public RadioButton viewAllRadio;
+    public Button backupBtn;
 
     @FXML
     public void initialize() {

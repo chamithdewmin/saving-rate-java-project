@@ -10,27 +10,27 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/Dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.DashboardController">
+<AnchorPane prefHeight="850.0" prefWidth="1500.0" stylesheets="@../CSS/Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.DashboardController">
 
     <!-- Date Filter -->
     <DatePicker fx:id="date" layoutX="1098.0" layoutY="41.0" prefHeight="40.0" prefWidth="180.0" styleClass="date-picker" />
-    <RadioButton fx:id="viewAllRadio" layoutX="999.0" layoutY="53.0" styleClass="allData" stylesheets="@../CSS/Dashboard.css" text="All Data" />
+    <RadioButton fx:id="viewAllRadio" layoutX="944.0" layoutY="54.0" styleClass="allData" stylesheets="@../CSS/Dashboard.css" text="Show All Records" />
 
     <!-- INCOME Block -->
     <AnchorPane layoutX="52.0" layoutY="39.0" prefHeight="125.0" prefWidth="220.0" styleClass="incomeBox">
-        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="INCOME" />
+        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Total Income" />
         <Label fx:id="income_value" layoutX="20.0" layoutY="25.0" prefHeight="75.0" prefWidth="180.0" styleClass="incomeValue" />
     </AnchorPane>
 
     <!-- EXPENSES Block -->
     <AnchorPane layoutX="301.0" layoutY="39.0" prefHeight="125.0" prefWidth="220.0" styleClass="expaenesBox">
-        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="EXPENSES" />
+        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Total Expenses" />
         <Label fx:id="expenses_value" layoutX="20.0" layoutY="25.0" prefHeight="75.0" prefWidth="180.0" styleClass="expensesValue" />
     </AnchorPane>
 
     <!-- SAVED Block -->
     <AnchorPane layoutX="548.0" layoutY="39.0" prefHeight="125.0" prefWidth="220.0" styleClass="savedBOx">
-        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="SAVED" />
+        <Label layoutX="14.0" layoutY="6.0" styleClass="label-title" text="Net Savings" />
         <Label fx:id="saved_value" layoutX="20.0" layoutY="25.0" prefHeight="75.0" prefWidth="180.0" styleClass="savedValue" />
     </AnchorPane>
     <AnchorPane layoutX="646.0" layoutY="214.0" prefHeight="410.0" prefWidth="800.0" style="-fx-background-color: #1A1A1A; -fx-background-radius: 30px;" />
@@ -66,6 +66,7 @@
 
     <!-- Buttons -->
     <Button layoutX="1303.0" layoutY="39.0" onAction="#handleRefresh" prefHeight="46.0" prefWidth="139.0" text="Refresh" />
-    <Button layoutX="1303.0" layoutY="112.0" onAction="#handleExportPDF" prefHeight="40.0" prefWidth="139.0" text="Export to PDF" />
+    <Button layoutX="1303.0" layoutY="114.0" onAction="#handleExportPDF" prefHeight="40.0" prefWidth="139.0" text="Download PDF" />
+   <Button fx:id="backupBtn" layoutX="1119.0" layoutY="111.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="139.0" text="Backup Now" />
 
 </AnchorPane>

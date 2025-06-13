@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="250.0" styleClass="root" stylesheets="@../CSS/Menu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.MenuController">
+<AnchorPane prefHeight="800.0" prefWidth="250.0" styleClass="root" stylesheets="@../CSS/Menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.savingRate.SavingRate.Controller.MenuController">
 
    <Button fx:id="dashboardButton" layoutX="24.0" layoutY="159.0" prefWidth="200.0" styleClass="Button" stylesheets="@../CSS/Menu.css" text="Dashboard" />
 
-   <Button fx:id="AddRateButton" layoutX="24.0" layoutY="229.0" prefWidth="200.0" text="Add Income/Expense" />
+   <Button fx:id="AddRateButton" layoutX="24.0" layoutY="229.0" prefWidth="200.0" text="Record Transaction" />
 
-   <Button fx:id="SettingButton" layoutX="26.0" layoutY="448.0" prefWidth="200.0" text="Read Data" />
-   <Button fx:id="reminderBtn" layoutX="25.0" layoutY="302.0" prefWidth="200.0" text="Reminders" />
+   <Button fx:id="SettingButton" layoutX="26.0" layoutY="448.0" prefWidth="200.0" text="View Reports" />
+   <Button fx:id="reminderBtn" layoutX="25.0" layoutY="302.0" prefWidth="200.0" text="Pending Transactions" />
    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/finzo%20logo.png" />
    </ImageView>
@@ -23,6 +23,6 @@
          <Font size="13.0" />
       </font>
    </Label>
-   <Button fx:id="invoiceBtn" layoutX="26.0" layoutY="373.0" prefWidth="200.0" text="Invoice" />
+   <Button fx:id="invoiceBtn" layoutX="26.0" layoutY="373.0" prefWidth="200.0" text="Generate Invoice" />
 
 </AnchorPane>

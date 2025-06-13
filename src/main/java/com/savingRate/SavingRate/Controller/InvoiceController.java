@@ -1,8 +1,8 @@
 package com.savingRate.SavingRate.Controller;
 
-import com.savingRate.SavingRate.Model.Income;
-import com.savingRate.SavingRate.Model.IncomeDAO;
+import com.savingRate.SavingRate.Model.*;
 import com.savingRate.SavingRate.Utils.CustomAlert;
+import com.savingRate.SavingRate.Utils.InvoiceNumberDAO;
 import com.savingRate.SavingRate.Utils.InvoiceUtillty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,38 +13,61 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class InvoiceController {
+
     @FXML public TextField nameTxt;
+    @FXML private TableColumn<InvoiceItem, String> typeColume;
     @FXML private Button RefreshBtn;
     @FXML private Button removeBtn;
-    @FXML private TableView<Income> invoiceTable;
-    @FXML private TableColumn<Income, Date> dateColum;
-    @FXML private TableColumn<Income, String> desColum;
-    @FXML private TableColumn<Income, Double> costColum;
+    @FXML private TableView<InvoiceItem> invoiceTable;
+    @FXML private TableColumn<InvoiceItem, LocalDate> dateColum;
+    @FXML private TableColumn<InvoiceItem, String> desColum;
+    @FXML private TableColumn<InvoiceItem, Double> costColum;
     @FXML private Button addBtn;
     @FXML private Button exportBtn;
-    @FXML private ListView<Income> listView;
+    @FXML private ListView<InvoiceItem> listView;
 
-    private final ObservableList<Income> incomeList = FXCollections.observableArrayList();
-    private final ObservableList<Income> selectedItems = FXCollections.observableArrayList();
+    private final ObservableList<InvoiceItem> allItems = FXCollections.observableArrayList();
+    private final ObservableList<InvoiceItem> selectedItems = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
+        // Setup table columns
         dateColum.setCellValueFactory(new PropertyValueFactory<>("date"));
         desColum.setCellValueFactory(new PropertyValueFactory<>("description"));
         costColum.setCellValueFactory(new PropertyValueFactory<>("value"));
+        typeColume.setCellValueFactory(new PropertyValueFactory<>("type"));
 
-        incomeList.addAll(IncomeDAO.getAllIncome());
-        invoiceTable.setItems(incomeList);
+        // Style 'Type' column
+        typeColume.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                getStyleClass().removeAll("type-complete", "type-pending");
 
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    if (item.equalsIgnoreCase("Complete")) {
+                        getStyleClass().add("type-complete");
+                    } else if (item.equalsIgnoreCase("Pending")) {
+                        getStyleClass().add("type-pending");
+                    }
+                }
+            }
+        });
+
+        invoiceTable.setItems(allItems);
         listView.setItems(selectedItems);
+
+        // Style list view
         listView.setCellFactory(param -> new ListCell<>() {
             @Override
-            protected void updateItem(Income item, boolean empty) {
+            protected void updateItem(InvoiceItem item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
@@ -53,11 +76,41 @@ public class InvoiceController {
                 }
             }
         });
+
+        loadAllData();
+    }
+
+    private void loadAllData() {
+        allItems.clear();
+
+        // Load income items
+        for (Income income : IncomeDAO.getAllIncome()) {
+            allItems.add(new InvoiceItem(
+                    income.getDate().toLocalDate(),
+                    income.getDescription(),
+                    income.getValue(),
+                    false
+            ));
+        }
+
+        // Load reminder (pending) items
+        for (Reminder r : ReminderDAO.getAllReminders()) {
+            if ("income".equalsIgnoreCase(r.getType())) {
+                allItems.add(new InvoiceItem(
+                        r.getDate(),
+                        r.getDescription(),
+                        r.getCost(),
+                        true
+                ));
+            }
+        }
+
+        invoiceTable.refresh();
     }
 
     @FXML
     public void handleAdd(ActionEvent event) {
-        Income selected = invoiceTable.getSelectionModel().getSelectedItem();
+        InvoiceItem selected = invoiceTable.getSelectionModel().getSelectedItem();
         if (selected != null && !selectedItems.contains(selected)) {
             selectedItems.add(selected);
         }
@@ -65,7 +118,7 @@ public class InvoiceController {
 
     @FXML
     public void handleRemove(ActionEvent event) {
-        Income selected = listView.getSelectionModel().getSelectedItem();
+        InvoiceItem selected = listView.getSelectionModel().getSelectedItem();
         if (selected != null) {
             selectedItems.remove(selected);
         } else {
@@ -89,21 +142,19 @@ public class InvoiceController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Invoice PDF");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
-        fileChooser.setInitialFileName("Logozo_Invoice.pdf");
+        LocalDate date = LocalDate.now();
+        fileChooser.setInitialFileName("Logozo_Invoice_" + date + ".pdf");
         File file = fileChooser.showSaveDialog(invoiceTable.getScene().getWindow());
 
         if (file != null) {
-            String invoiceNumber = UUID.randomUUID().toString().substring(0, 8).toUpperCase();
-            LocalDate date = LocalDate.now();
-            InvoiceUtillty.exportIncomeInvoice(file.getAbsolutePath(), selectedItems, invoiceNumber, date, clientName);
+            String invoiceNumber = InvoiceNumberDAO.getNextInvoiceNumber(); // ✅ auto-incremented invoice number
+            InvoiceUtillty.exportUnifiedInvoice(file.getAbsolutePath(), selectedItems, invoiceNumber, date, clientName);
             CustomAlert.showSuccess("Invoice exported successfully!");
         }
     }
 
     @FXML
     public void handleRefresh(ActionEvent event) {
-        incomeList.clear();
-        incomeList.addAll(IncomeDAO.getAllIncome());
-        invoiceTable.refresh();
+        loadAllData();
     }
 }

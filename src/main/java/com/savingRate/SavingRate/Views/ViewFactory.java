@@ -87,7 +87,9 @@ public class ViewFactory {
 
             stage.setScene(scene);
             stage.setTitle("Finzo");
-            stage.setResizable(false);
+            stage.setResizable(true);
+            stage.setMaximized(true); // use for get full screen when open the system
+//            stage.setFullScreen(true);  // use for get full screen not task bar and no close buttons
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
