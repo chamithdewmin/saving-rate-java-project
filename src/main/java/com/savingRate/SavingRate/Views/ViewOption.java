@@ -5,5 +5,7 @@ public enum ViewOption {
     ADD_RATE,
     READ_DATA,
     REMINDER,
-    INVOICE
+    INVOICE,
+    TASK,
+    SMS
 }

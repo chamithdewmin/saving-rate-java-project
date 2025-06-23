@@ -15,6 +15,8 @@ public class ViewFactory {
     private AnchorPane settingView;
     private AnchorPane reminderView;
     private AnchorPane invoiceView;
+    private AnchorPane taskView;
+    private AnchorPane smsView;
 
     public ObjectProperty<ViewOption> getMenuItem() {
         return menuItem;
@@ -51,6 +53,28 @@ public class ViewFactory {
             }
         }
         return settingView;
+    }
+
+    public AnchorPane showTask() {
+        if (taskView == null) {
+            try {
+                taskView = new FXMLLoader(getClass().getResource("/Xaml/Task.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return taskView;
+    }
+
+    public AnchorPane showSms() {
+        if (smsView == null) {
+            try {
+                smsView = new FXMLLoader(getClass().getResource("/Xaml/SmsSender.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return smsView;
     }
 
     public AnchorPane showReminderView() {

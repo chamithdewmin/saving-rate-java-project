@@ -138,3 +138,13 @@
     -fx-background-radius: 10;
     -fx-border-radius: 10;
 }
+
+.textArea {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #000000;
+    -fx-prompt-text-fill: #aaaaaa;
+    -fx-border-color: #333;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8px;
+}

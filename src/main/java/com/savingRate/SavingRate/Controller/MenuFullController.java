@@ -23,6 +23,8 @@ public class MenuFullController implements Initializable {
                 case READ_DATA -> menuParent.setCenter(Model.getInstance().getViewFactory().showSettingView());
                 case REMINDER -> menuParent.setCenter(Model.getInstance().getViewFactory().showReminderView());
                 case INVOICE -> menuParent.setCenter(Model.getInstance().getViewFactory().showInvoiceView());
+                case TASK -> menuParent.setCenter(Model.getInstance().getViewFactory().showTask());
+                case SMS -> menuParent.setCenter(Model.getInstance().getViewFactory().showSms());
             }
         });
 

@@ -9,6 +9,8 @@ public class MenuController {
 
     public Button reminderBtn;
     public Button invoiceBtn;
+    public Button taskBtn;
+    public Button smsBtn;
     @FXML
     private Button dashboardButton;
 
@@ -25,6 +27,9 @@ public class MenuController {
         SettingButton.setOnAction(e -> Model.getInstance().getViewFactory().getMenuItem().set(ViewOption.READ_DATA));
         reminderBtn.setOnAction(e -> Model.getInstance().getViewFactory().getMenuItem().set(ViewOption.REMINDER));
         invoiceBtn.setOnAction(e -> Model.getInstance().getViewFactory().getMenuItem().set(ViewOption.INVOICE));
+        taskBtn.setOnAction(e -> Model.getInstance().getViewFactory().getMenuItem().set(ViewOption.TASK));
+        smsBtn.setOnAction(e -> Model.getInstance().getViewFactory().getMenuItem().set(ViewOption.SMS));
+
 
 
     }
